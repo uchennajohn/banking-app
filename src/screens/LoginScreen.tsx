@@ -302,22 +302,30 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
     }
 
     const biometricAuth = await LocalAuthentication.authenticateAsync({
-      promptMessage: "Login Successful with Biometric",
+      promptMessage: "Login with Biometric",
       cancelLabel: "Cancel",
-      disableDeviceFallback: true,
+      disableDeviceFallback: false,
     });
 
-    if (biometricAuth) {
-      twoButtonAlert();
+    // if (biometricAuth.success) {
+    //   //twoButtonAlert();
+    // }
+    if (biometricAuth.success) {
+      Alert.alert("Success", "You are logged in!");
+      navigation.navigate("DashboardDrawer"); // Navigate user after successful authentication
+    } else {
+      Alert.alert("Failed", "Biometric authentication failed.");
     }
   };
 
   useEffect(() => {
-    async () => {
+    const checkBiometricSupport = async () => {
       const compatible = await LocalAuthentication.hasHardwareAsync();
       setIsBiometricSupported(compatible);
     };
-  });
+
+    checkBiometricSupport();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -405,12 +413,6 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-
-      <Text>
-        {isBiometricSupported
-          ? "Your device is compatible with Biometrics"
-          : "Face or Fingerprint is not available on this device"}
-      </Text>
     </SafeAreaView>
   );
 };
