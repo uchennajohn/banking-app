@@ -210,6 +210,7 @@ import axios from "axios";
 import { login, selectUserState } from "../Redux/userSlice";
 import { RootState } from "../Redux/store";
 import { Entypo } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as LocalAuthentication from "expo-local-authentication";
 
 const API_URL = "https://67a758b6203008941f6756f1.mockapi.io/api/v1/users";
@@ -230,6 +231,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       );
 
       if (matchingUser) {
+        await AsyncStorage.setItem("userId", matchingUser.id);
         dispatch(login({ name: matchingUser.name }));
         navigation.navigate("DasboardDrawer");
       } else {
@@ -304,17 +306,34 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
     const biometricAuth = await LocalAuthentication.authenticateAsync({
       promptMessage: "Login with Biometric",
       cancelLabel: "Cancel",
-      disableDeviceFallback: false,
+      disableDeviceFallback: true,
     });
 
     // if (biometricAuth.success) {
     //   //twoButtonAlert();
     // }
+    // if (biometricAuth.success) {
+    //   const storedUserId = await AsyncStorage.getItem("userId");
+
+    //   Alert.alert("Success", "You are logged in!");
+    //   navigation.navigate("DasboardDrawer"); // Navigate user after successful authentication
+    // } else {
+    //   Alert.alert("Failed", "Biometric authentication failed.");
+    // }
     if (biometricAuth.success) {
-      Alert.alert("Success", "You are logged in!");
-      navigation.navigate("DashboardDrawer"); // Navigate user after successful authentication
-    } else {
-      Alert.alert("Failed", "Biometric authentication failed.");
+      const storedUserId = await AsyncStorage.getItem("userId");
+      if (storedUserId) {
+        try {
+          const response = await axios.get(`${API_URL}/${storedUserId}`);
+          const user = response.data;
+          dispatch(login({ name: user.name })); // Store user in Redux
+          navigation.navigate("DasboardDrawer");
+        } catch (error) {
+          Alert.alert("Error", "Failed to fetch user data.");
+        }
+      } else {
+        Alert.alert("Error", "No user found. Please log in manually.");
+      }
     }
   };
 
