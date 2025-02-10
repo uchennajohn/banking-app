@@ -13,7 +13,8 @@ Watchman (For better file watching on macOS/Linux) - brew install watchman
 
 
 Clone the Repository
-Using the link below clone the repository from GitHub
+Use the link below clone the repository from GitHub
+https://github.com/uchennajohn/banking-app
 
  Install Dependencies
 Run the command below from your terminal to install dependencies
@@ -56,6 +57,8 @@ You need, the username and password to login as a user, for ease of login, below
 
 "username": "uche",
 "password": "password"
+
+
 After a successful login, to log out, the user clicks on the red-colored log-out icon by the top right side of the dashboard screen. This returns the user to the login screen for a possible login.
 The Screens for the Profile and Settings can be accessed from the Drawer navigation.
 
