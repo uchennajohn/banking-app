@@ -55,8 +55,8 @@ After successfully running the application on any of your preferred means, to lo
 https://67a758b6203008941f6756f1.mockapi.io/api/v1/users, 
 You need, the username and password to login as a user, for ease of login, below is a pair of username and password for a user from the database.
 
-"username": "uche",
-"password": "password"
+username: uche,
+password: password
 
 
 After a successful login, to log out, the user clicks on the red-colored log-out icon by the top right side of the dashboard screen. This returns the user to the login screen for a possible login.
