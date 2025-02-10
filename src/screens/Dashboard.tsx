@@ -112,7 +112,7 @@ const DashboardScreen = ({ navigation }: { navigation: any }) => {
             style={{
               flexDirection: "row",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: "flex-end",
             }}
           >
             <TouchableOpacity

@@ -33,7 +33,7 @@ const AccountActivity = () => {
         </View>
         <Text style={[styles.amountText]}></Text>
         <View style={{ flexDirection: "column" }}>
-          <Text style={{ fontSize: 15, fontWeight: "600" }}>"+₦20</Text>
+          <Text style={{ fontSize: 15, fontWeight: "600" }}>+₦20</Text>
           <Text style={{ color: "#164782" }}>Successful</Text>
         </View>
       </View>
@@ -56,7 +56,7 @@ const AccountActivity = () => {
         </View>
         <Text style={[styles.amountText]}></Text>
         <View style={{ flexDirection: "column" }}>
-          <Text style={{ fontSize: 15, fontWeight: "600" }}>"+₦2,000</Text>
+          <Text style={{ fontSize: 15, fontWeight: "600" }}>+₦2,000</Text>
           <Text style={{ color: "#164782" }}>Successful</Text>
         </View>
       </View>
@@ -79,7 +79,7 @@ const AccountActivity = () => {
         </View>
         <Text style={[styles.amountText]}></Text>
         <View style={{ flexDirection: "column" }}>
-          <Text style={{ fontSize: 15, fontWeight: "600" }}>"-₦15,000</Text>
+          <Text style={{ fontSize: 15, fontWeight: "600" }}>-₦15,000</Text>
           <Text style={{ color: "#164782" }}>Successful</Text>
         </View>
       </View>
