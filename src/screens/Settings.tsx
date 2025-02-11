@@ -1,15 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Switch } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Switch,
+  ScrollView,
+} from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import LogoutModal from "../components/LogoutModal";
-
-interface User {
-  id: string;
-  name: string;
-  avatar: string;
-  username: string;
-}
 
 const SettingsScreen = ({ navigation }: { navigation: any }) => {
   const [isBiometricEnabled, setIsBiometricEnabled] = React.useState(false);
@@ -20,7 +20,7 @@ const SettingsScreen = ({ navigation }: { navigation: any }) => {
   };
   return (
     <>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Security</Text>
           <SettingsItem title="Change PIN" icon="lock" onPress={() => {}} />
@@ -62,7 +62,7 @@ const SettingsScreen = ({ navigation }: { navigation: any }) => {
         >
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
       <LogoutModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
