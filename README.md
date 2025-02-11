@@ -59,6 +59,7 @@ username: uche,
 password: password
 
 
-After a successful login, to log out, the user clicks on the red-colored log-out icon by the top right side of the dashboard screen. This returns the user to the login screen for a possible login.
+After a successful login, to log out, the user clicks on the settings tab option from the bottom tab, on the settings screen, the logout button is present to log user out.
 The Screens for the Profile and Settings can be accessed from the Drawer navigation.
+After your first login using username and password, fingerprint authentication can be used thereafter to login in same return user.
 
