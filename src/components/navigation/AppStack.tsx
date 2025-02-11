@@ -100,7 +100,6 @@ const MainDrawer = ({ navigation }: { navigation: any }) => {
   const [accountName, setAccountName] = useState("");
   const [userData, setUserData] = useState<User | null>(null);
   const loggedInUser = useSelector((state: RootState) => state.user.name);
-  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -145,6 +144,11 @@ const MainDrawer = ({ navigation }: { navigation: any }) => {
                   gap: 8,
                 }}
               >
+                <Ionicons
+                  name="notifications-outline"
+                  size={24}
+                  color="black"
+                />
                 {userData?.avatar && (
                   <TouchableOpacity>
                     <Image
